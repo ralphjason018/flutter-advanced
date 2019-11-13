@@ -6,9 +6,9 @@ var bodyParser = require('body-parser');
 
 //start mysql connection
 var connection = mysql.createConnection({
-  host     : '50e7f58f@us-cdbr-iron-east-05.cleardb.net', //mysql database host name
+  host     : 'us-cdbr-iron-east-05.cleardb.net', //mysql database host name
   user     : 'b5c9452651a00d', //mysql database user name
-  password : '', //mysql database password
+  password : '50e7f58f', //mysql database password
   database : 'heroku_96663e8b67e6fb2' //mysql database name
 });
 
