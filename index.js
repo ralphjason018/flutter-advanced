@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 //end body-parser configuration
 
 //create app server
-var server = app.listen(process.env.PORT || 5000, "0.0.0.0", function () {
+var server = app.listen(process.env.PORT || 5000, "127.0.0.1", function () {
   var host = server.address().address
   var port = server.address().port
 
@@ -35,21 +35,21 @@ var server = app.listen(process.env.PORT || 5000, "0.0.0.0", function () {
 });
 
 app.get('/', function (req, res) {
-  res.end({app:'doh-api'});
+  res.send({app:'doh-api'});
 });
 
 //rest api to get all patients
 app.get('/patients', function (req, res) {
    connection.query('select * from patients', function (error, results, fields) {
 	  if (error) throw error;
-	  res.end(JSON.stringify(results));
+	  res.send(results);
 	});
 });
 //rest api to get a single patients data
 app.get('/patients/:id', function (req, res) {
    connection.query('select * from patients where Id=?', [req.params.id], function (error, results, fields) {
 	  if (error) throw error;
-	  res.end(JSON.stringify(results));
+	  res.send(results);
 	});
 });
 
@@ -59,7 +59,7 @@ app.post('/patients', function (req, res) {
    console.log(params);
    connection.query('INSERT INTO patients SET ?', params, function (error, results, fields) {
 	  if (error) throw error;
-	  res.end(JSON.stringify(results));
+	  res.send(results);
 	});
 });
 
@@ -67,7 +67,7 @@ app.post('/patients', function (req, res) {
 app.put('/patients', function (req, res) {
    connection.query('UPDATE `patients` SET `Name`=?,`Address`=?,`Country`=?,`Phone`=? where `Id`=?', [req.body.Name,req.body.Address, req.body.Country, req.body.Phone, req.body.Id], function (error, results, fields) {
 	  if (error) throw error;
-	  res.end(JSON.stringify(results));
+	  res.send(results);
 	});
 });
 
@@ -76,6 +76,6 @@ app.delete('/patients', function (req, res) {
    console.log(req.body);
    connection.query('DELETE FROM `patients` WHERE `Id`=?', [req.body.Id], function (error, results, fields) {
 	  if (error) throw error;
-	  res.end('Record has been deleted!');
+	  res.send('Record has been deleted!');
 	});
 });
