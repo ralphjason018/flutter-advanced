@@ -1,4 +1,4 @@
-package com.example.flutter_advanced
+package com.doh.healthapp
 
 import android.os.Bundle
 
