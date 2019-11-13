@@ -8,7 +8,5 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `Country` varchar(100) NOT NULL,
   `Diagnosis` varchar(300) NOT NULL,
   `Phone` int(10) NOT NULL,
-  `Created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
