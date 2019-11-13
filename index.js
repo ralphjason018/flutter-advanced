@@ -34,6 +34,10 @@ var server = app.listen(process.env.PORT || 5000, function () {
 
 });
 
+app.get('/', function (req, res) {
+  res.end({app:'doh-api'});
+});
+
 //rest api to get all patients
 app.get('/patients', function (req, res) {
    connection.query('select * from patients', function (error, results, fields) {
